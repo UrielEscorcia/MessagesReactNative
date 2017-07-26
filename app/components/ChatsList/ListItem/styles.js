@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     cellW: {
         flex: 1,
+        backgroundColor: 'white'
     },
     cellInner:{
         flex: 1,

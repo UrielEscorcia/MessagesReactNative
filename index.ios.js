@@ -11,32 +11,30 @@ import {
     StyleSheet,
     View
 } from 'react-native';
+import {
+    StackNavigator,
+} from 'react-navigation';
 
 import ChatsList from './app/components/ChatsList';
+import Chat from './app/components/Chat';
 
-export default class MessagesReactNative extends Component {
-    render() {
-        return (
-            <NavigatorIOS
-                initialRoute={{
-                    component: ChatsList,
-                    title: 'Messages',
-                    titleTextColor: "rgba(0, 0, 0, 0.5)",
-                    tintColor: "rgba(0, 0, 0, 0.5)",
-                    rightButtonSystemIcon: 'compose',
-                    translucent: true,
-                    backButtonTitle: ' '
-                }}
-                style={ styles.container }
-            />
-        );
+
+const routesConfig = {
+    ChatsList: { screen: ChatsList },
+    Chat: { screen: Chat }
+};
+
+const stackNavigatorConfig = {
+    navigationOptions: {
+        headerTintColor: "rgba(0, 0, 0, 0.5)",
+        headerBackTitle: null,
+        headerStyle: {
+            backgroundColor: 'white',
+        },
     }
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1
-    }
-})
+const App = StackNavigator(routesConfig, stackNavigatorConfig);
 
-AppRegistry.registerComponent('MessagesReactNative', () => MessagesReactNative);
+
+AppRegistry.registerComponent('MessagesReactNative', () => App);

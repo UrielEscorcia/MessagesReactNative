@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import {
     FlatList,
     View,
+    Button,
     Text
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 import ListItem from './ListItem';
 import Chat from '../Chat';
 
 export default class ChatsList extends Component {
+
+    static navigationOptions = {
+        title: 'Messages',
+        // headerRight: <Icon name="ios-add" />
+    };
 
     constructor(props) {
         super(props);
@@ -22,43 +30,7 @@ export default class ChatsList extends Component {
                 },
                 {
                     id: 2,
-                    name:"yay"
-                },
-                {
-                    id: 3,
-                    name:"yay"
-                },
-                {
-                    id: 4,
-                    name:"yay"
-                },
-                {
-                    id: 5,
-                    name:"yay"
-                },
-                {
-                    id: 6,
-                    name:"yay"
-                },
-                {
-                    id: 7,
-                    name:"yay"
-                },
-                {
-                    id: 8,
-                    name:"yay"
-                },
-                {
-                    id: 9,
-                    name:"yay"
-                },
-                {
-                    id: 10,
-                    name:"yay"
-                },
-                {
-                    id: 11,
-                    name:"yay"
+                    name:"nombre"
                 }
             ]
         };
@@ -80,11 +52,11 @@ export default class ChatsList extends Component {
     }
 
     _renderRowCell(item){
-
+        const { navigate } = this.props.navigation;
         return(
             <ListItem
                 item={item}
-                onPress={ () => this._chatView() }
+                onPress={ () => navigate('Chat') }
             />
         );
     }
@@ -97,13 +69,19 @@ export default class ChatsList extends Component {
         );
     }
 
-    _chatView(){
-        this.props.navigator.push({
-            component: Chat,
-            title: 'Pikachu',
-            titleTextColor: "rgba(0, 0, 0, 0.5)",
-            tintColor: "rgba(0, 0, 0, 0.5)",
+    _headerRightButton(){
+        return(
+            <Icon name="ios-add" />
+        );
+    }
 
-        });
+    _chatView(){
+        // this.props.navigator.push({
+        //     component: Chat,
+        //     title: 'Pikachu',
+        //     titleTextColor: "rgba(0, 0, 0, 0.5)",
+        //     tintColor: "rgba(0, 0, 0, 0.5)",
+
+        // });
     }
 }

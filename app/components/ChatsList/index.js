@@ -27,10 +27,6 @@ export default class ChatsList extends Component {
                 {
                     id: 1,
                     name:"yay"
-                },
-                {
-                    id: 2,
-                    name:"nombre"
                 }
             ]
         };

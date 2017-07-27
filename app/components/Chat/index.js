@@ -6,7 +6,7 @@ import {
     ScrollView,
     Text,
     TextInput,
-    TouchableHighlight
+    TouchableOpacity
 } from 'react-native';
 
 import styles from './styles';
@@ -30,22 +30,22 @@ export default class Chat extends Component {
                 {
                     id: 0,
                     user: 'me',
-                    name:"yay"
+                    message:"yay"
                 },
                 {
                     id: 1,
                     user: 'me',
-                    name:"In React Native flex does not work the same way that it does in CSS."
+                    message:"In React Native flex does not work the same way that it does in CSS."
                 },
                 {
                     id: 2,
                     user: 'you',
-                    name:"look"
+                    message:"look"
                 },
                 {
-                    id: 4,
+                    id: 3,
                     user: 'you',
-                    name:"win :D "
+                    message:"win :D "
                 }
             ],
             height: 0,
@@ -79,16 +79,13 @@ export default class Chat extends Component {
                             onChange={(e) => this.onChange(e)}
 
                         />
-                        <TouchableHighlight
+                        <TouchableOpacity
                             style={styles.button}
                             onPress={()=> this.sendMessage()}
-                            activeOpacity={0.5}
-                            underlayColor='white'
-                            nShowUnderlay={()=>this.setState({touchableHighlightMouseDown:true})}
-                            onHideUnderlay={()=>this.setState({touchableHighlightMouseDown:false})} >
+                            activeOpacity={0.5} >
 
                             <Icon name="md-send" style={styles.send}/>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     </View>
 
                 </View>
@@ -98,16 +95,27 @@ export default class Chat extends Component {
     }
 
     sendMessage(){
-        let text = this.state.typing;
-        if (text.trim().length > 0) {
-            console.log(this.state.typing)
+        let text = this.state.typing.trim();
+        if (text.length > 0) {
+
+            const message = {
+                id: this.state.listOfData.length,
+                user: 'me',
+                message: text
+            };
+
+            const listOfData = [...this.state.listOfData, message];
+            this.setState({
+               listOfData: listOfData,
+               typing: ""
+            });
         }
 
     }
 
     onChange(e) {
         const contentSize = e.nativeEvent.contentSize;
-        // console.log(contentSize)
+
         if (this.state.height !== contentSize.height) {
             this.setState({
                height: contentSize.height

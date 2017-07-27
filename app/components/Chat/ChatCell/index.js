@@ -30,7 +30,7 @@ export default class ChatCell extends Component {
             <View style={styles.chatCellW}>
                 <View style={[styles.chatCellInner, rowStyle]}>
 
-                    <Text style={styles.chat}> { item.name } </Text>
+                    <Text style={styles.chat}> { item.message } </Text>
 
                 </View>
             </View>

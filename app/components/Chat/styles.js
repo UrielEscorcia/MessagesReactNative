@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     textInput: {
         flex: 1,
         paddingLeft: 16,
-        paddingRight: 26,
+        paddingRight: 35,
         paddingTop: 5,
         paddingBottom: 5,
         color: 'rgba(0, 0, 0, 0.5)',
@@ -32,20 +32,26 @@ const styles = StyleSheet.create({
         borderWidth: 1,
 
     },
-    send: {
+    button:{
         position: 'absolute',
-        top: '50%',
-        right: 16,
-        alignItems: 'center',
-
-        fontSize: 30,
-        height: 30,
-
         transform: [
             { translateY: -5 },
         ],
 
-        color: 'rgba(0, 0, 0, 0.8)',
+        bottom: 6,
+        right: 16,
+        borderRadius: 20,
+
+    },
+    send: {
+        flex: 1,
+        fontSize: 27,
+        height: 27,
+        width: 27,
+        color: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'transparent',
+
+        textAlign: 'center',
 
     }
 });
